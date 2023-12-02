@@ -17,20 +17,19 @@ void DoctorList::insertDoctor(Doctor *newDoctor)
 {
   DoctorNode *newDoc = new DoctorNode();
   newDoc->doc = newDoctor;
+  newDoc->prevDoc = last;
 
-  if (count == 0)
+  if (first == nullptr)
   {
     first = newDoc;
-    last = newDoc;
-    count = 1;
   }
   else
   {
     last->nextDoc = newDoc;
-    newDoc->prevDoc = last;
-    last = newDoc;
-    count++;
   }
+
+  last = newDoc;
+  count++;
 }
 
 void DoctorList::listDoctors() const
@@ -43,4 +42,39 @@ void DoctorList::listDoctors() const
     std::cout << "Doctor #" << counter << ":\n\t Name: " << temp->doc->getName() << ", Age: " << temp->doc->getAge() << "\n";
     temp = temp->nextDoc;
   }
+}
+
+void DoctorList::deleteDoctor(string doctorName)
+{
+  if (count == 0)
+  {
+    return;
+  }
+
+  DoctorNode *temp = first;
+  while (temp != nullptr && temp->doc->getName() != doctorName)
+  {
+    temp = temp->nextDoc;
+  }
+
+  if (temp == nullptr)
+  {
+    return;
+  }
+
+  if (temp->prevDoc != nullptr)
+  {
+    temp->prevDoc->nextDoc = temp->nextDoc;
+  }
+  else
+  {
+    first = temp->nextDoc;
+  }
+
+  if (temp->nextDoc != nullptr)
+  {
+    temp->nextDoc->prevDoc = temp->prevDoc;
+  }
+
+  delete temp;
 }
