@@ -15,5 +15,5 @@ public:
   void listDoctors() const;
   void insertDoctor(Doctor *newDoctor);
   void deleteDoctor(string doctorName);
-  void searchDoctor(string doctorName) const;
+  Doctor *searchDoctor(string doctorName) const;
 };

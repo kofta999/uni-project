@@ -78,3 +78,20 @@ void DoctorList::deleteDoctor(string doctorName)
 
   delete temp;
 }
+
+Doctor *DoctorList::searchDoctor(string doctorName) const
+{
+  DoctorNode *temp = first;
+
+  while (temp != nullptr)
+  {
+    if (temp->doc->getName() == doctorName)
+    {
+      return temp->doc;
+    }
+
+    temp = temp->nextDoc;
+  }
+
+  return nullptr;
+}
