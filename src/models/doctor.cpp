@@ -1,11 +1,18 @@
-#include <doctor.h>
+#include "doctor.h"
 #include <string>
+#include <iostream>
 using namespace std;
 
-Doctor::Doctor(string name, int age)
+Doctor::Doctor()
 {
-  name = name;
-  age = age;
+  name = "";
+  age = 0;
+}
+
+Doctor::Doctor(string docName, int docAge)
+{
+  name = docName;
+  age = docAge;
 }
 
 string Doctor::getName() const

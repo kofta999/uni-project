@@ -8,7 +8,8 @@ private:
   string name;
 
 public:
-  Doctor(string name, int age);
+  Doctor();
+  Doctor(string docName, int docAge);
   string getName() const;
   int getAge() const;
   void setName(string newName);

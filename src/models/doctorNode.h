@@ -3,7 +3,8 @@
 class DoctorNode
 {
 public:
-  Doctor doc;
+  Doctor *doc;
   DoctorNode *nextDoc;
   DoctorNode *prevDoc;
+  DoctorNode();
 };

@@ -11,9 +11,9 @@ public:
   int count;
 
   DoctorList();
-  // At first
-  void listDoctors();
-  void insertDoctor(Doctor newDoctor);
+  int getListLength() const;
+  void listDoctors() const;
+  void insertDoctor(Doctor *newDoctor);
   void deleteDoctor(string doctor);
-  void searchDoctor(string doctorName);
+  void searchDoctor(string doctorName) const;
 };
