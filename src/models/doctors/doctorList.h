@@ -5,7 +5,7 @@ using namespace std;
 
 class DoctorList
 {
-public:
+private:
   DoctorNode *first;
   DoctorNode *last;
   int count;
