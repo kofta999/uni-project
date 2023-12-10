@@ -1,4 +1,4 @@
-#include "patientNode.h"
+#include "patientQueue.h"
 #include <iostream>
 
 using namespace std;
