@@ -2,7 +2,7 @@
 
 PatientNode::PatientNode()
 {
-  doc = new Patient();
-  nextDoc = nullptr;
-  prevDoc = nullptr;
+  patient = new Patient();
+  nextpatient = nullptr;
+  prevpatient = nullptr;
 }
