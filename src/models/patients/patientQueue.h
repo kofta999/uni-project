@@ -3,7 +3,7 @@
 
 using namespace std;
 
-class PatientList
+class PatientQueue
 {
 private:
   PatientNode *front;

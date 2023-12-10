@@ -3,8 +3,8 @@
 class PatientNode
 {
 public:
-  Patient *doc;
-  PatientNode *nextDoc;
-  PatientNode *prevDoc;
+  Patient *patient;
+  PatientNode *nextpatient;
+  PatientNode *prevpatient;
   PatientNode();
 };

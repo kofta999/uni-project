@@ -7,12 +7,16 @@ Patient::Patient()
 {
   name = "";
   age = 0;
+  diagnosis = ""; 
+  medicalHistory = "";
 }
 
 Patient::Patient(string patientName, int patientAge)
 {
   name = patientName;
   age = patientAge;
+  diagnosis = "";  
+  medicalHistory = "";
 }
 
 string Patient::getName() const
