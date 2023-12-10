@@ -3,6 +3,6 @@
 PatientNode::PatientNode()
 {
   patient = new Patient();
-  nextpatient = nullptr;
-  prevpatient = nullptr;
+  nextPatient = nullptr;
+  prevPatient = nullptr;
 }

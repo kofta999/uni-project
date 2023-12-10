@@ -4,7 +4,7 @@ class PatientNode
 {
 public:
   Patient *patient;
-  PatientNode *nextpatient;
-  PatientNode *prevpatient;
+  PatientNode *nextPatient;
+  PatientNode *prevPatient;
   PatientNode();
 };

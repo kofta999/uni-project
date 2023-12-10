@@ -11,11 +11,12 @@ private:
   int count;
   // int MAX_SIZE = 99;
 
-  PatientList();
+public:
+  PatientQueue();
   Patient *searchPatient(string patientName) const;
   Patient *getFront() const;
   Patient *getBack() const;
-  int getListLength() const;
+  int getQueueLength() const;
   void listPatients() const;
   void addPatient(Patient *newPatient);
   void deletePatient(string patientName);

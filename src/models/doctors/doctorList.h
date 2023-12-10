@@ -10,6 +10,7 @@ private:
   DoctorNode *last;
   int count;
 
+public:
   DoctorList();
   int getListLength() const;
   void listDoctors() const;

@@ -3,73 +3,60 @@
 
 using namespace std;
 
-class PatientQueue
-{
-private:
-  PatientNode *front;
-  PatientNode *back;
-  int count;
-
-public:
-  PatientQueue(); 
-  ~PatientQueue(); 
-
-  Patient *searchPatient(string patientName) const;
-  Patient *getFront() const;
-  Patient *getBack() const;
-  int getListLength() const;
-  void listPatients() const;
-  void addPatient(Patient *newPatient);
-  void deletePatient(string patientName);
-  void destroyQueue();
-  bool isQueueEmpty();
-};
-
-
 PatientQueue::PatientQueue() : front(nullptr), back(nullptr), count(0) {}
 
-
-PatientQueue::~PatientQueue()
-{
-  destroyQueue();
-}
-
+// PatientQueue::~PatientQueue()
+// {
+//   destroyQueue();
+// }
 
 Patient *PatientQueue::searchPatient(string patientName) const
 {
+  PatientNode *temp = front;
 
+  while (temp != nullptr)
+  {
+    if (temp->patient->getName() == patientName)
+    {
+      return temp->patient;
+    }
+
+    temp = temp->nextPatient;
+  }
+
+  return nullptr;
 }
 
 Patient *PatientQueue::getFront() const
 {
-  return front ? front->getPatient() : nullptr;
+  return front ? front->patient : nullptr;
 }
 
 Patient *PatientQueue::getBack() const
 {
-  return back ? back->getPatient() : nullptr;
+  return back ? back->patient : nullptr;
 }
 
-
-int PatientQueue::getListLength() const
+int PatientQueue::getQueueLength() const
 {
   return count;
 }
-
 
 void PatientQueue::listPatients() const
 {
   PatientNode *current = front;
   while (current)
   {
-    cout << "Patient: " << current->getPatient()->getName() << endl;
-    current = current->getNext();
+    cout << "Patient: " << current->patient->getName() << endl;
+    current = current->nextPatient;
   }
 }
 
 void PatientQueue::addPatient(Patient *newPatient)
 {
-  PatientNode *newNode = new PatientNode(newPatient);
+  PatientNode *newNode = new PatientNode();
+  newNode->patient = newPatient;
+
   if (isQueueEmpty())
   {
     front = newNode;
@@ -77,18 +64,15 @@ void PatientQueue::addPatient(Patient *newPatient)
   }
   else
   {
-    back->setNext(newNode);
+    back->nextPatient = newNode;
     back = newNode;
   }
   count++;
 }
 
-
 void PatientQueue::deletePatient(string patientName)
 {
-
 }
-
 
 void PatientQueue::destroyQueue()
 {
@@ -97,7 +81,7 @@ void PatientQueue::destroyQueue()
 
   while (current)
   {
-    next = current->getNext();
+    next = current->nextPatient;
     delete current;
     current = next;
   }
@@ -106,10 +90,7 @@ void PatientQueue::destroyQueue()
   count = 0;
 }
 
-
 bool PatientQueue::isQueueEmpty()
 {
   return front == nullptr;
 }
-
-
