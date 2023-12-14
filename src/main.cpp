@@ -32,6 +32,7 @@ int main()
 
   cout << list2.searchPatient("pat3")->getName() << "\n";
   // cout << list2.isQueueEmpty() << "\n";
-  list2.destroyQueue();
+  // list2.destroyQueue();
+  list2.deletePatient("pat1");
   cout << list2.getQueueLength() << "\n";
 }

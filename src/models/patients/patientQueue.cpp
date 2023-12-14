@@ -72,6 +72,39 @@ void PatientQueue::addPatient(Patient *newPatient)
 
 void PatientQueue::deletePatient(string patientName)
 {
+  if (count == 0)
+  {
+    return;
+  }
+
+  PatientNode *temp = front;
+
+  while (temp != nullptr && temp->patient->getName() != patientName)
+  {
+    temp = temp->nextPatient;
+  }
+
+  if (temp == nullptr)
+  {
+    return;
+  }
+
+  if (temp->prevPatient != nullptr)
+  {
+    temp->prevPatient->nextPatient = temp->nextPatient;
+  }
+  else
+  {
+    front = temp->nextPatient;
+  }
+
+  if (temp->nextPatient != nullptr)
+  {
+    temp->nextPatient->prevPatient = temp->prevPatient;
+  }
+
+  delete temp;
+  count--;
 }
 
 void PatientQueue::destroyQueue()
