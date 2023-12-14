@@ -13,6 +13,7 @@ private:
 
 public:
   PatientQueue();
+  ~PatientQueue();
   Patient *searchPatient(string patientName) const;
   Patient *getFront() const;
   Patient *getBack() const;

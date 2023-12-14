@@ -5,10 +5,13 @@ using namespace std;
 
 PatientQueue::PatientQueue() : front(nullptr), back(nullptr), count(0) {}
 
-// PatientQueue::~PatientQueue()
-// {
-//   destroyQueue();
-// }
+PatientQueue::~PatientQueue()
+{
+  if (front != nullptr && back != nullptr)
+  {
+    destroyQueue();
+  }
+}
 
 Patient *PatientQueue::searchPatient(string patientName) const
 {

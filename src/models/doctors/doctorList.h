@@ -12,6 +12,7 @@ private:
 
 public:
   DoctorList();
+  ~DoctorList();
   int getListLength() const;
   void listDoctors() const;
   void insertDoctor(Doctor *newDoctor);

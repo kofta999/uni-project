@@ -8,6 +8,19 @@ DoctorList::DoctorList()
   count = 0;
 }
 
+DoctorList::~DoctorList()
+{
+  DoctorNode *temp = first;
+  while (first != nullptr)
+  {
+    first = first->nextDoc;
+    delete temp;
+    temp = first;
+  }
+  last = nullptr;
+  count = 0;
+}
+
 int DoctorList::getListLength() const
 {
   return count;
