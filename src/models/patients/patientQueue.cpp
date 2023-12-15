@@ -15,18 +15,20 @@ PatientQueue::~PatientQueue()
 
 Patient *PatientQueue::searchPatient(string patientName) const
 {
-  PatientNode *temp = front;
+  PatientNode *temp = back;
 
   while (temp != nullptr)
   {
     if (temp->patient->getName() == patientName)
     {
+      cout << "Found Patient " << patientName << "\n";
       return temp->patient;
     }
 
     temp = temp->nextPatient;
   }
 
+  cout << "Couldn't find Patient" << patientName << "\n";
   return nullptr;
 }
 
@@ -42,16 +44,25 @@ Patient *PatientQueue::getBack() const
 
 int PatientQueue::getQueueLength() const
 {
+  cout << "Queue length is " << count << "\n";
   return count;
 }
 
 void PatientQueue::listPatients() const
 {
-  PatientNode *current = front;
-  while (current)
+  if (count == 0 && front == back && front == nullptr)
   {
-    cout << "Patient: " << current->patient->getName() << endl;
-    current = current->nextPatient;
+    cout << "Queue is Empty\n";
+    return;
+  }
+  PatientNode *current = front;
+  int counter = 0;
+  cout << "Listing patients from the front to the back of the queue\n";
+  while (current != nullptr)
+  {
+    counter++;
+    cout << "Patient #" << counter << ":\n\t Name: " << current->patient->getName() << ", Age: " << current->patient->getAge() << "\n";
+    current = current->prevPatient;
   }
 }
 
@@ -60,20 +71,23 @@ void PatientQueue::addPatient(Patient *newPatient)
   PatientNode *newNode = new PatientNode();
   newNode->patient = newPatient;
 
-  if (isQueueEmpty())
+  if (front == nullptr && back == nullptr)
   {
     front = newNode;
     back = newNode;
   }
   else
   {
-    back->nextPatient = newNode;
+    back->prevPatient = newNode;
+    newNode->nextPatient = back;
     back = newNode;
   }
+  cout << "Added Patient with"
+       << ":\n\t Name: " << newNode->patient->getName() << ", Age: " << newNode->patient->getAge() << "\n";
   count++;
 }
 
-void PatientQueue::deletePatient(string patientName)
+void PatientQueue::deletePatient()
 {
   if (count == 0)
   {
@@ -82,30 +96,21 @@ void PatientQueue::deletePatient(string patientName)
 
   PatientNode *temp = front;
 
-  while (temp != nullptr && temp->patient->getName() != patientName)
+  if (count == 1 && front == back)
   {
-    temp = temp->nextPatient;
-  }
-
-  if (temp == nullptr)
-  {
-    return;
-  }
-
-  if (temp->prevPatient != nullptr)
-  {
-    temp->prevPatient->nextPatient = temp->nextPatient;
+    front = nullptr;
+    back = nullptr;
   }
   else
   {
-    front = temp->nextPatient;
+    front = temp->prevPatient;
+    if (front != nullptr)
+    {
+      front->nextPatient = nullptr;
+    }
   }
 
-  if (temp->nextPatient != nullptr)
-  {
-    temp->nextPatient->prevPatient = temp->prevPatient;
-  }
-
+  cout << "Patient " << temp->patient->getName() << " on the front of the queue has been removed\n";
   delete temp;
   count--;
 }
@@ -128,5 +133,14 @@ void PatientQueue::destroyQueue()
 
 bool PatientQueue::isQueueEmpty()
 {
-  return front == nullptr;
+  if (front == nullptr && back == nullptr)
+  {
+    cout << "Queue is empty\n";
+    return true;
+  }
+  else
+  {
+    cout << "Queue is not empty\n";
+    return false;
+  };
 }

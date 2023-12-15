@@ -20,7 +20,7 @@ public:
   int getQueueLength() const;
   void listPatients() const;
   void addPatient(Patient *newPatient);
-  void deletePatient(string patientName);
+  void deletePatient();
   void destroyQueue();
   bool isQueueEmpty();
   // bool isQueueFull();
