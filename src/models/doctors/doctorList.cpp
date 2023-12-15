@@ -76,6 +76,7 @@ void DoctorList::deleteDoctor(string doctorName)
 
   if (temp == nullptr)
   {
+    cout << "Couldn't find the Doctor with Name: " << doctorName << " to be removed\n";
     return;
   }
 
@@ -93,7 +94,7 @@ void DoctorList::deleteDoctor(string doctorName)
     temp->nextDoc->prevDoc = temp->prevDoc;
   }
 
-  cout << "Doctor " << doctorName << " has been removed\n";
+  cout << "Doctor with Name: " << doctorName << " has been removed\n";
   delete temp;
 }
 

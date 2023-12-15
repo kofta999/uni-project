@@ -21,14 +21,14 @@ Patient *PatientQueue::searchPatient(string patientName) const
   {
     if (temp->patient->getName() == patientName)
     {
-      cout << "Found Patient " << patientName << "\n";
+      cout << "Found Patient with Name: " << patientName << "\n";
       return temp->patient;
     }
 
     temp = temp->nextPatient;
   }
 
-  cout << "Couldn't find Patient" << patientName << "\n";
+  cout << "Couldn't find Patient with Name: " << patientName << "\n";
   return nullptr;
 }
 
@@ -110,7 +110,7 @@ void PatientQueue::deletePatient()
     }
   }
 
-  cout << "Patient " << temp->patient->getName() << " on the front of the queue has been removed\n";
+  cout << "Patient with Name: " << temp->patient->getName() << " on the front of the queue has been removed\n";
   delete temp;
   count--;
 }

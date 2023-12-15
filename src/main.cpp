@@ -4,37 +4,106 @@
 
 using namespace std;
 
+void newLine()
+{
+  cout << "\n";
+}
+
 int main()
 {
-  DoctorList list1;
-  Doctor *doc1 = new Doctor("doc1", 23);
-  Doctor *doc2 = new Doctor("doc2", 32);
-  Doctor *doc3 = new Doctor("doc3", 52);
-  list1.insertDoctor(doc1);
-  list1.insertDoctor(doc2);
-  list1.insertDoctor(doc3);
-  list1.getListLength();
-  list1.listDoctors();
-  list1.deleteDoctor("doc2");
-  list1.listDoctors();
-  Doctor *foundDoc1 = list1.searchDoctor("doc1");
-  list1.searchDoctor("doc5");
+  // Creates doctors list
+  DoctorList doctorsList;
 
-  PatientQueue list2;
-  Patient *pat1 = new Patient("pat1", 34);
-  Patient *pat2 = new Patient("pat2", 44);
-  Patient *pat3 = new Patient("pat3", 42);
-  list2.addPatient(pat1);
-  list2.addPatient(pat2);
-  list2.addPatient(pat3);
-  list2.getQueueLength();
-  list2.listPatients();
+  // Creates doctors to use in list
+  Doctor *doctor1 = new Doctor("Doctor 1", 32);
+  Doctor *doctor2 = new Doctor("Doctor 2", 53);
+  Doctor *doctor3 = new Doctor("Doctor 3", 41);
 
-  list2.searchPatient("pat3");
-  list2.isQueueEmpty();
-  // list2.destroyQueue();
-  list2.deletePatient();
-  list2.deletePatient();
-  list2.isQueueEmpty();
-  list2.listPatients();
+  // Inserts doctors in list
+  doctorsList.insertDoctor(doctor1);
+  doctorsList.insertDoctor(doctor2);
+  doctorsList.insertDoctor(doctor3);
+
+  newLine();
+
+  // Checks doctors list length
+  doctorsList.getListLength();
+
+  newLine();
+
+  // Lists all doctors
+  doctorsList.listDoctors();
+
+  newLine();
+
+  // Searches for a doctor in the list
+  doctorsList.searchDoctor("Doctor 1");
+
+  // Searches for a doctor not in the list
+  doctorsList.searchDoctor("Doctor 5");
+
+  newLine();
+
+  // Deletes a doctor in the list
+  doctorsList.deleteDoctor("Doctor 1");
+
+  // Deletes a doctor not in the list
+  doctorsList.deleteDoctor("Doctor 5");
+
+  newLine();
+  newLine();
+  newLine();
+  newLine();
+
+  // Creates patients list
+  PatientQueue patientsQueue;
+
+  // Creates patients to use in queue
+  Patient *patient1 = new Patient("Patient 1", 32);
+  Patient *patient2 = new Patient("Patient 2", 53);
+  Patient *patient3 = new Patient("Patient 3", 41);
+
+  // Inserts patients in queue
+  patientsQueue.addPatient(patient1);
+  patientsQueue.addPatient(patient2);
+  patientsQueue.addPatient(patient3);
+
+  newLine();
+
+  // Checks patients queue length
+  patientsQueue.getQueueLength();
+
+  // Gets the front and back of the queue
+  cout << patientsQueue.getFront()->getName() << " is in the front of the queue\n";
+  cout << patientsQueue.getBack()->getName() << " is in the back of the queue\n";
+
+  newLine();
+
+  // Lists all patients
+  patientsQueue.listPatients();
+
+  newLine();
+
+  // Searches for a patient in the queue
+  patientsQueue.searchPatient("Patient 1");
+
+  // Searches for a patient not in the queue
+  patientsQueue.searchPatient("Patient 5");
+
+  newLine();
+
+  // Deletes the patient in the front of the queue
+  patientsQueue.deletePatient();
+
+  newLine();
+
+  // Checks if the queue is empty or not
+  patientsQueue.isQueueEmpty();
+
+  newLine();
+
+  // Removes every item in the queue
+  patientsQueue.destroyQueue();
+  cout << "Queue is destroyed\n";
+  patientsQueue.isQueueEmpty();
 }
