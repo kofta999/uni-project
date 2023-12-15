@@ -23,6 +23,7 @@ DoctorList::~DoctorList()
 
 int DoctorList::getListLength() const
 {
+  cout << "List count is " << count << "\n";
   return count;
 }
 
@@ -43,16 +44,19 @@ void DoctorList::insertDoctor(Doctor *newDoctor)
 
   last = newDoc;
   count++;
+  cout << "Added Doctor with"
+       << ":\n    Name: " << newDoc->doc->getName() << ", Age: " << newDoc->doc->getAge() << "\n";
 }
 
 void DoctorList::listDoctors() const
 {
   DoctorNode *temp = first;
   int counter = 0;
+  cout << "Listing all Doctors in the list:\n";
   while (temp != nullptr)
   {
     counter++;
-    std::cout << "Doctor #" << counter << ":\n\t Name: " << temp->doc->getName() << ", Age: " << temp->doc->getAge() << "\n";
+    cout << "    Doctor #" << counter << ":\n\tName: " << temp->doc->getName() << ", Age: " << temp->doc->getAge() << "\n";
     temp = temp->nextDoc;
   }
 }
@@ -89,6 +93,7 @@ void DoctorList::deleteDoctor(string doctorName)
     temp->nextDoc->prevDoc = temp->prevDoc;
   }
 
+  cout << "Doctor " << doctorName << " has been removed\n";
   delete temp;
 }
 
@@ -100,11 +105,13 @@ Doctor *DoctorList::searchDoctor(string doctorName) const
   {
     if (temp->doc->getName() == doctorName)
     {
+      cout << "Found Doctor with Name: " << doctorName << "\n";
       return temp->doc;
     }
 
     temp = temp->nextDoc;
   }
 
+  cout << "Couldn't find Doctor with Name: " << doctorName << "\n";
   return nullptr;
 }

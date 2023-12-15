@@ -61,7 +61,7 @@ void PatientQueue::listPatients() const
   while (current != nullptr)
   {
     counter++;
-    cout << "Patient #" << counter << ":\n\t Name: " << current->patient->getName() << ", Age: " << current->patient->getAge() << "\n";
+    cout << "    Patient #" << counter << ":\n\tName: " << current->patient->getName() << ", Age: " << current->patient->getAge() << "\n";
     current = current->prevPatient;
   }
 }
@@ -83,7 +83,7 @@ void PatientQueue::addPatient(Patient *newPatient)
     back = newNode;
   }
   cout << "Added Patient with"
-       << ":\n\t Name: " << newNode->patient->getName() << ", Age: " << newNode->patient->getAge() << "\n";
+       << ":\n    Name: " << newNode->patient->getName() << ", Age: " << newNode->patient->getAge() << "\n";
   count++;
 }
 
